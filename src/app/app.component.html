@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="form-group">
+  <input type="text" [(ngModel)]='searchTitle' class="form-control" placeholder="search the table by title">
+</div>
+<table class="table table-bordered">
+  <tr>
+    <th>title</th>
+    <th>url</th>
+    <th>created_at</th>
+    <th>author </th>
+  </tr>
+  <tr *ngFor='let data of dataList|pipe:"title":searchTitle' (click)='popup(data)' data-toggle="modal" data-target="#myModal">
+    <td>{{data.title}}</td>
+    <td>{{data.url}}</td>
+    <td>{{data.created_at}}</td>
+    <td>{{data.created_at}}</td>
+  </tr>
+</table>
+
+
+
+ 
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        {{rawJsonData|json}}
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
